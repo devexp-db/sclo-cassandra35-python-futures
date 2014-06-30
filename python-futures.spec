@@ -5,12 +5,12 @@
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
 Version:       2.1.6
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       BSD
 Group:         Development/Libraries
 URL:           http://code.google.com/p/pythonfutures/
 Source0:       http://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
-BuildRequires: python-setuptools-devel
+BuildRequires: python-setuptools
 BuildArch:     noarch
 
 %description
@@ -33,6 +33,9 @@ asynchronously executing callables.
 %{python_sitelib}/futures-*.egg-info*
 
 %changelog
+* Mon Jun 30 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 2.1.6-3
+- Replace python-setuptools-devel BR with python-setuptools
+
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.1.6-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
 
