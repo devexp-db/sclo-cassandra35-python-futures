@@ -4,12 +4,12 @@
 
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
-Version:       2.1.6
-Release:       3%{?dist}
+Version:       3.0.2
+Release:       1%{?dist}
 License:       BSD
 Group:         Development/Libraries
-URL:           http://code.google.com/p/pythonfutures/
-Source0:       http://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
+URL:           https://github.com/agronholm/pythonfutures
+Source0:       https://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
 BuildRequires: python-setuptools
 BuildArch:     noarch
 
@@ -29,10 +29,12 @@ asynchronously executing callables.
 %files
 %doc CHANGES LICENSE 
 %{python_sitelib}/concurrent
-%{python_sitelib}/futures
 %{python_sitelib}/futures-*.egg-info*
 
 %changelog
+* Sun Jun 07 2015 Terje Rosten <terje.rosten@ntnu.no> - 3.0.2-1
+- 3.0.2
+
 * Mon Jun 30 2014 Toshio Kuratomi <toshio@fedoraproject.org> - 2.1.6-3
 - Replace python-setuptools-devel BR with python-setuptools
 
