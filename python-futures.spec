@@ -1,37 +1,38 @@
-%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(0)")}
-
-%global oname  futures
-
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
-Version:       3.0.3
+Version:       3.0.4
 Release:       1%{?dist}
 License:       BSD
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
 Source0:       https://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
-BuildRequires: python-setuptools
+BuildRequires: python2-devel
 BuildArch:     noarch
+%{?python_provide:%python_provide python-futures}
 
 %description
 The concurrent.futures module provides a high-level interface for
 asynchronously executing callables.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%setup -q -n futures-%{version}
 
 %build
-%{__python} setup.py build
+%{py2_build}
 
 %install
-%{__python} setup.py install -O1 --skip-build --root %{buildroot}
+%{py2_install}
 
 %files
-%doc CHANGES LICENSE 
-%{python_sitelib}/concurrent
-%{python_sitelib}/futures-*.egg-info*
+%license LICENSE
+%doc CHANGES
+%{python2_sitelib}/concurrent
+%{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Mon Jan 18 2016 Terje Rosten <terje.rosten@ntnu.no> - 3.0.4-1
+- 3.0.4
+
 * Wed Jun 24 2015 Terje Rosten <terje.rosten@ntnu.no> - 3.0.3-1
 - 3.0.3
 
