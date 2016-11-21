@@ -1,16 +1,23 @@
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
-Version:       3.0.4
-Release:       3%{?dist}
+Version:       3.0.5
+Release:       1%{?dist}
 License:       BSD
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
 Source0:       https://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
 BuildRequires: python2-devel
 BuildArch:     noarch
-%{?python_provide:%python_provide python-futures}
 
 %description
+The concurrent.futures module provides a high-level interface for
+asynchronously executing callables.
+
+%package -n python2-futures
+Summary:        %{summary}
+%{?python_provide:%python_provide python2-futures}
+
+%description -n python2-futures
 The concurrent.futures module provides a high-level interface for
 asynchronously executing callables.
 
@@ -23,13 +30,17 @@ asynchronously executing callables.
 %install
 %{py2_install}
 
-%files
+%files -n python2-futures
 %license LICENSE
 %doc CHANGES
 %{python2_sitelib}/concurrent
 %{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Mon Nov 21 2016 Orion Poplawski <orion@cora.nwra.com> - 3.0.5-1
+- Update to 3.0.5
+- Ship python2-futures
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 3.0.4-3
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
