@@ -1,7 +1,7 @@
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
 Version:       3.0.5
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       BSD
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
@@ -16,6 +16,8 @@ asynchronously executing callables.
 %package -n python2-futures
 Summary:        %{summary}
 %{?python_provide:%python_provide python2-futures}
+Provides:  python-futures = %{version}-%{release}
+Obsoletes: python-futures < %{version}-%{release}
 
 %description -n python2-futures
 The concurrent.futures module provides a high-level interface for
@@ -37,6 +39,9 @@ asynchronously executing callables.
 %{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Wed Jan  4 2017 Peter Robinson <pbrobinson@fedoraproject.org> 3.0.5-2
+- Obsolete/provide python-futures
+
 * Mon Nov 21 2016 Orion Poplawski <orion@cora.nwra.com> - 3.0.5-1
 - Update to 3.0.5
 - Ship python2-futures
