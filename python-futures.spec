@@ -1,11 +1,11 @@
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
-Version:       3.0.5
-Release:       3%{?dist}
-License:       BSD
+Version:       3.1.1
+Release:       1%{?dist}
+License:       Python
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
-Source0:       https://pypi.python.org/packages/source/f/futures/futures-%{version}.tar.gz
+Source0:       https://files.pythonhosted.org/packages/source/f/futures/futures-%{version}.tar.gz
 BuildRequires: python2-devel
 BuildArch:     noarch
 
@@ -39,6 +39,9 @@ asynchronously executing callables.
 %{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Thu May 18 2017 Terje Rosten <terje.rosten@ntnu.no> - 3.1.1-1
+- 3.1.1
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.0.5-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
