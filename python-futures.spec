@@ -1,7 +1,7 @@
 Summary:       Backport of the concurrent.futures package from Python 3.2
 Name:          python-futures
 Version:       3.1.1
-Release:       1%{?dist}
+Release:       2%{?dist}
 License:       Python
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
@@ -39,6 +39,9 @@ asynchronously executing callables.
 %{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Thu May 18 2017 Terje Rosten <terje.rosten@ntnu.no> - 3.1.1-1
 - 3.1.1
 
