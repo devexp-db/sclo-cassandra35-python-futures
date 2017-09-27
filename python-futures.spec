@@ -1,25 +1,30 @@
+%{?scl:%scl_package python-futures}
+%{!?scl:%global pkg_name %{name}}
+
 Summary:       Backport of the concurrent.futures package from Python 3.2
-Name:          python-futures
+Name:          %{scl_prefix}python-futures
 Version:       3.1.1
-Release:       2%{?dist}
+Release:       3%{?dist}
 License:       Python
 Group:         Development/Libraries
 URL:           https://github.com/agronholm/pythonfutures
 Source0:       https://files.pythonhosted.org/packages/source/f/futures/futures-%{version}.tar.gz
 BuildRequires: python2-devel
 BuildArch:     noarch
+%{?scl:Requires: %scl_runtime}
+%{?scl:BuildRequires: %scl-scldevel}
 
 %description
 The concurrent.futures module provides a high-level interface for
 asynchronously executing callables.
 
-%package -n python2-futures
+%package -n %{?scl_prefix}python2-futures
 Summary:        %{summary}
 %{?python_provide:%python_provide python2-futures}
-Provides:  python-futures = %{version}-%{release}
-Obsoletes: python-futures < %{version}-%{release}
+Provides:  %{?scl_prefix}python-futures = %{version}-%{release}
+Obsoletes: %{?scl_prefix}python-futures < %{version}-%{release}
 
-%description -n python2-futures
+%description -n %{?scl_prefix}python2-futures
 The concurrent.futures module provides a high-level interface for
 asynchronously executing callables.
 
@@ -27,18 +32,25 @@ asynchronously executing callables.
 %setup -q -n futures-%{version}
 
 %build
+%{?scl:scl enable %{scl} - << "EOF"}
 %{py2_build}
+%{?scl:EOF}
 
 %install
-%{py2_install}
+%{?scl:scl enable %{scl} - << "EOF"}
+%{py2_install -- --prefix %{?_prefix}}
+%{?scl:EOF}
 
-%files -n python2-futures
+%files -n %{?scl_prefix}python2-futures
 %license LICENSE
 %doc CHANGES
 %{python2_sitelib}/concurrent
 %{python2_sitelib}/futures-*.egg-info*
 
 %changelog
+* Fri Sep 22 2017 Augusto Caringi <acaringi@redhat.com> - 3.1.1-3
+- scl conversion
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 3.1.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
