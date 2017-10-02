@@ -2,7 +2,7 @@
 %{!?scl:%global pkg_name %{name}}
 
 Summary:       Backport of the concurrent.futures package from Python 3.2
-Name:          %{scl_prefix}python-futures
+Name:          %{?scl_prefix}python-futures
 Version:       3.1.1
 Release:       3%{?dist}
 License:       Python
@@ -20,7 +20,7 @@ asynchronously executing callables.
 
 %package -n %{?scl_prefix}python2-futures
 Summary:        %{summary}
-%{?python_provide:%python_provide python2-futures}
+%{!?scl:%{?python_provide:%python_provide python2-futures}}
 Provides:  %{?scl_prefix}python-futures = %{version}-%{release}
 Obsoletes: %{?scl_prefix}python-futures < %{version}-%{release}
 
